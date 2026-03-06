@@ -16,4 +16,4 @@ sudo apt update -y && sudo apt install git curl wget ninja-build \
   gettext cmake unzip build-essential libtool libtool-bin autoconf \
   automake pkg-config doxygen ripgrep fd-find xclip python3-pip \
   python3-venv gdb lldb gcc ncurses-term sqlite3 libsqlite3-dev \
-  fzf luarocks lazygit imagemagick
+  fzf luarocks lazygit imagemagick -y

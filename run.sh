@@ -17,3 +17,13 @@ sudo apt update -y && sudo apt install git curl wget ninja-build \
   automake pkg-config doxygen ripgrep fd-find xclip python3-pip \
   python3-venv gdb lldb gcc ncurses-term sqlite3 libsqlite3-dev \
   fzf luarocks lazygit imagemagick -y
+
+# install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+
+# configure nvm
+nvm install --lts
+nvm use --lts
+nvm alias default 'lts/*'
+npmbin=$(npm config get prefix)/bin
+PATH="$PATH:$npmbin"

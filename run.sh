@@ -67,3 +67,5 @@ LINETOADD='export PATH="$PATH:'"$CARGO"'"'
 grep -qxF "$LINETOADD" "$HOME/.bashrc" || echo "$LINETOADD" >>"$HOME/.bashrc"
 
 source "$HOME/.bashrc"
+
+cargo install ast-grep --locked

@@ -51,3 +51,8 @@ LINETOADD='export PATH="$PATH:'"$NPMBIN"'"'
 grep -qxF "$LINETOADD" "$HOME/.bashrc" || echo "$LINETOADD" >>"$HOME/.bashrc"
 
 source "$HOME/.bashrc"
+
+# install npm packages
+npm install -g neovim
+npm install -g tree-sitter-cli
+npm install -g @mermaid-js/mermaid-cli

@@ -42,5 +42,7 @@ export NVM_DIR="$HOME/.nvm"
 nvm install --lts
 nvm use --lts
 nvm alias default 'lts/*'
+source ~/.bashrc
+
 npmbin=$(npm config get prefix)/bin
 PATH="$PATH:$npmbin"

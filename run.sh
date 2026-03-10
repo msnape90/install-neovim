@@ -44,6 +44,7 @@ nvm use --lts
 nvm alias default 'lts/*'
 source ~/.bashrc
 
-npmbin=$(npm config get prefix)/bin
-PATH="$PATH:$npmbin"
-source ~/.bashrc
+NPMBIN="$(npm config get prefix)/bin"
+LINETOADD= "export PATH=\"\$PATH:$NPMBIN\""
+grep -qxF "$LINE" "$HOME/.bashrc" || echo "$LINE" >>"$HOME/.bashrc"
+source "$HOME/.bashrc"

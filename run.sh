@@ -46,5 +46,6 @@ source ~/.bashrc
 
 NPMBIN="$(npm config get prefix)/bin"
 LINETOADD= "export PATH=\"\$PATH:$NPMBIN\""
-grep -qxF "$LINE" "$HOME/.bashrc" || echo "$LINE" >>"$HOME/.bashrc"
+grep -qxF "$LINETOADD" "$HOME/.bashrc" || echo "$LINE" >>"$HOME/.bashrc"
+
 source "$HOME/.bashrc"

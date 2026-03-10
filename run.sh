@@ -56,3 +56,14 @@ source "$HOME/.bashrc"
 npm install -g neovim
 npm install -g tree-sitter-cli
 npm install -g @mermaid-js/mermaid-cli
+
+# install rust and cargo
+curl https://sh.rustup.rs -sSf | sh
+
+# add cargo to path
+CARGO="$HOME/.cargo"
+LINETOADD='export PATH="$PATH:'"$CARGO"'"'
+
+grep -qxF "$LINETOADD" "$HOME/.bashrc" || echo "$LINETOADD" >>"$HOME/.bashrc"
+
+source "$HOME/.bashrc"

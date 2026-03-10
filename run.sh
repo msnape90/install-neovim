@@ -2,14 +2,24 @@
 
 echo "starting Neovim Install"
 
-# Check if SUDO_USER is empty (not run with sudo)
-if [ -z "$SUDO_USER" ]; then
-  echo "Error: This script must be run with sudo. Use: sudo ./script.sh" >&2
-  exit 1
+# Ensures the script is not running as sudo or root
+
+CURRENTUSER=$(whoami)
+
+if [[ $CURRENTUSER == "root" ]]; then
+  echo "Do not run this script as root/sudo"
+  exit
 fi
 
-# If we reach here, run with sudo
-echo "Success: Running with sudo. Original user: $SUDO_USER"
+# attempts to gain sudo access if not already accquired
+
+sudo -v
+
+# exits the script if sudo access is not granted
+sudo -n true 2>/dev/null || {
+  echo "You must have the ability to run sudo commands to execute this script"
+  exit 1
+}
 
 # update and install curent available apt packages
 sudo apt update -y && sudo apt install git curl wget ninja-build \

@@ -28,8 +28,15 @@ sudo apt update -y && sudo apt install git curl wget ninja-build \
   python3-venv gdb lldb gcc ncurses-term sqlite3 libsqlite3-dev \
   fzf luarocks lazygit imagemagick -y
 
+####
+
 # install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+
+# set up nvm to run in current terminal
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # configure nvm
 nvm install --lts

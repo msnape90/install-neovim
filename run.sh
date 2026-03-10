@@ -44,8 +44,10 @@ nvm use --lts
 nvm alias default 'lts/*'
 source ~/.bashrc
 
+# add npm globals bin to path
 NPMBIN="$(npm config get prefix)/bin"
-LINETOADD= "export PATH=\"\$PATH:$NPMBIN\""
-grep -qxF "$LINETOADD" "$HOME/.bashrc" || echo "$LINE" >>"$HOME/.bashrc"
+LINETOADD='export PATH="$PATH:'"$NPMBIN"'"'
+
+grep -qxF "$LINETOADD" "$HOME/.bashrc" || echo "$LINETOADD" >>"$HOME/.bashrc"
 
 source "$HOME/.bashrc"

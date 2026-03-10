@@ -46,3 +46,4 @@ source ~/.bashrc
 
 npmbin=$(npm config get prefix)/bin
 PATH="$PATH:$npmbin"
+source ~/.bashrc

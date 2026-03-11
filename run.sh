@@ -65,10 +65,12 @@ npm install -g @mermaid-js/mermaid-cli
 #### RUST
 
 # install rust and cargo
-curl https://sh.rustup.rs -sSf | sh
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+
+. "$HOME/.cargo/env"
 
 # add cargo to path
-CARGO="$HOME/.cargo"
+CARGO="$HOME/.cargo/bin"
 LINETOADD='export PATH="$PATH:'"$CARGO"'"'
 
 grep -qxF "$LINETOADD" "$HOME/.bashrc" || echo "$LINETOADD" >>"$HOME/.bashrc"
@@ -77,32 +79,32 @@ source "$HOME/.bashrc"
 
 cargo install ast-grep --locked
 
-#### NERD FONT
-
-wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip &&
-  cd ~/.local/share/fonts &&
-  unzip JetBrainsMono.zip &&
-  rm JetBrainsMono.zip &&
-  fc-cache -fv
-
-#### BUILD NEOVIM
-
-mkdir -p ~/src &&
-  git clone https://github.com/neovim/neovim.git ~/src/neovim &&
-  cd ~/src/neovim &&
-  git checkout stable
-make CMAKE_BUILD_TYPE=RelWithDebInfo &&
-  sudo make install
-
-#### INSTALL LAZYVIM
-
-mv ~/.config/nvim{,.bak}
-
-# optional but recommended
-mv ~/.local/share/nvim{,.bak}
-mv ~/.local/state/nvim{,.bak}
-mv ~/.cache/nvim{,.bak}
-
-git clone https://github.com/LazyVim/starter ~/.config/nvim
-
-rm -rf ~/.config/nvim/.git
+##### NERD FONT
+#
+#wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip &&
+#  cd ~/.local/share/fonts &&
+#  unzip JetBrainsMono.zip &&
+#  rm JetBrainsMono.zip &&
+#  fc-cache -fv
+#
+##### BUILD NEOVIM
+#
+#mkdir -p ~/src &&
+#  git clone https://github.com/neovim/neovim.git ~/src/neovim &&
+#  cd ~/src/neovim &&
+#  git checkout stable
+#make CMAKE_BUILD_TYPE=RelWithDebInfo &&
+#  sudo make install
+#
+##### INSTALL LAZYVIM
+#
+#mv ~/.config/nvim{,.bak}
+#
+## optional but recommended
+#mv ~/.local/share/nvim{,.bak}
+#mv ~/.local/state/nvim{,.bak}
+#mv ~/.cache/nvim{,.bak}
+#
+#git clone https://github.com/LazyVim/starter ~/.config/nvim
+#
+#rm -rf ~/.config/nvim/.git

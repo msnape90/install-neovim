@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# TODO:
+# test tectonic
+# test gtk gsettings
+# install wezterm
+#
 echo "starting Neovim Install"
 
 # Ensures the script is not running as sudo or root
@@ -79,6 +84,13 @@ source "$HOME/.bashrc"
 
 cargo install ast-grep --locked
 
+# install tectonic dependencies
+sudo apt-get install \
+  libfontconfig1-dev libgraphite2-dev libharfbuzz-dev libicu-dev libssl-dev zlib1g-dev -y && \ # Install tectonic dependencies
+cd $HOME/.local/bin &&
+  curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh && \ # Install tectonic
+cd -
+
 ### PYTHON
 
 install uv
@@ -87,12 +99,17 @@ source $HOME/.local/bin/env
 source "$HOME/.bashrc"
 
 ##### NERD FONT
-#
+# install nerd font
 wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip &&
   cd ~/.local/share/fonts &&
   unzip JetBrainsMono.zip &&
   rm JetBrainsMono.zip &&
   fc-cache -fv
+
+# set gnome terminal to nerd font
+PROFILE_ID=$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')
+gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$PROFILE_ID/" font "'JetBrainsMonoNL Nerd Font Mono 13'"
+gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$PROFILE_ID/" cell-width-scale 1.05
 
 #### BUILD NEOVIM
 

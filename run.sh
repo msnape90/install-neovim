@@ -65,22 +65,28 @@
 #### RUST
 
 # install rust and cargo
-curl https://sh.rustup.rs -sSf | sh -s -- -y
+# curl https://sh.rustup.rs -sSf | sh -s -- -y
+#
+# . "$HOME/.cargo/env"
+#
+# # add cargo to path
+# CARGO="$HOME/.cargo/bin"
+# LINETOADD='export PATH="$PATH:'"$CARGO"'"'
+#
+# grep -qxF "$LINETOADD" "$HOME/.bashrc" || echo "$LINETOADD" >>"$HOME/.bashrc"
+#
+# source "$HOME/.bashrc"
+#
+# cargo install ast-grep --locked
+#
+#### PYTHON
 
-. "$HOME/.cargo/env"
-
-# add cargo to path
-CARGO="$HOME/.cargo/bin"
-LINETOADD='export PATH="$PATH:'"$CARGO"'"'
-
-grep -qxF "$LINETOADD" "$HOME/.bashrc" || echo "$LINETOADD" >>"$HOME/.bashrc"
-
+# install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
 source "$HOME/.bashrc"
 
-cargo install ast-grep --locked
-
-##### NERD FONT
-#
+# ##### NERD FONT
+# #
 #wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip &&
 #  cd ~/.local/share/fonts &&
 #  unzip JetBrainsMono.zip &&
@@ -108,3 +114,10 @@ cargo install ast-grep --locked
 #git clone https://github.com/LazyVim/starter ~/.config/nvim
 #
 #rm -rf ~/.config/nvim/.git
+
+# configure uv environment for lazygit
+# uv venv ~/.local/share/nvim/python3
+# source ~/.local/share/nvim/python3/bin/activate
+# uv pip install pynvim
+# mkdir -p /home/$USER/.config/nvim
+# echo "vim.g.python3_host_prog = '/home/$USER/.local/share/nvim/python3/bin/python'" >> /home/$USER/.config/nvim/init.lua

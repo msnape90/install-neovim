@@ -62,23 +62,23 @@ npm install -g neovim
 npm install -g tree-sitter-cli
 npm install -g @mermaid-js/mermaid-cli
 
-#### RUST
-
-# install rust and cargo
-curl https://sh.rustup.rs -sSf | sh -s -- -y
-
-. "$HOME/.cargo/env"
-
-# add cargo to path
-CARGO="$HOME/.cargo/bin"
-LINETOADD='export PATH="$PATH:'"$CARGO"'"'
-
-grep -qxF "$LINETOADD" "$HOME/.bashrc" || echo "$LINETOADD" >>"$HOME/.bashrc"
-
-source "$HOME/.bashrc"
-
-cargo install ast-grep --locked
-
+##### RUST
+#
+## install rust and cargo
+#curl https://sh.rustup.rs -sSf | sh -s -- -y
+#
+#. "$HOME/.cargo/env"
+#
+## add cargo to path
+#CARGO="$HOME/.cargo/bin"
+#LINETOADD='export PATH="$PATH:'"$CARGO"'"'
+#
+#grep -qxF "$LINETOADD" "$HOME/.bashrc" || echo "$LINETOADD" >>"$HOME/.bashrc"
+#
+#source "$HOME/.bashrc"
+#
+#cargo install ast-grep --locked
+#
 ##### NERD FONT
 #
 #wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip &&

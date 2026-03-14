@@ -2,7 +2,6 @@
 
 # TODO:
 # test tectonic
-# test gtk gsettings
 # install wezterm
 #
 echo "starting Neovim Install"
@@ -87,7 +86,7 @@ cargo install ast-grep --locked
 # install tectonic dependencies
 sudo apt-get install \
   libfontconfig1-dev libgraphite2-dev libharfbuzz-dev libicu-dev libssl-dev zlib1g-dev -y && \ # Install tectonic dependencies
-cd $HOME/.local/bin &&
+mkdir -p $HOME/.local/bin && cd $HOME/.local/bin &&
   curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh && \ # Install tectonic
 cd -
 
@@ -133,9 +132,16 @@ git clone https://github.com/LazyVim/starter ~/.config/nvim
 
 rm -rf ~/.config/nvim/.git
 
-configure uv environment for lazygit
-uv venv ~/.local/share/nvim/python3
-source ~/.local/share/nvim/python3/bin/activate
-uv pip install pynvim
-mkdir -p /home/$USER/.config/nvim
-echo "vim.g.python3_host_prog = '/home/$USER/.local/share/nvim/python3/bin/python'" >>/home/$USER/.config/nvim/init.lua
+# configure uv environment for lazygit
+uv venv ~/.local/share/nvim/python3 &&
+  source ~/.local/share/nvim/python3/bin/activate &&
+  uv pip install pynvim &&
+  mkdir -p /home/$USER/.config/nvim &&
+  echo "vim.g.python3_host_prog = '/home/$USER/.local/share/nvim/python3/bin/python'" >>/home/$USER/.config/nvim/init.lua
+
+# install wezterm
+curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg &&
+  echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list &&
+  sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg
+
+sudo apt update && sudo apt install wezterm-nightly -y

@@ -25,7 +25,7 @@ NEWDEBSOURCE=$(grep "http" /tmp/aptsources/sources.list -m 1 | awk '{print $2}')
 # backup current sources file
 sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
-# replace the first occurance of the old deb source with the new one
+# replace the first occurance of the old deb source with the new one ( the z option dosnt seen to work in script)
 sudo sed -iz "s#$OLDDEBSOURCE#$NEWDEBSOURCE#" /etc/apt/sources.list
 
 echo "updated /etc/apt/sources.list to the fastest repo. if error occurs restore from /etc/apt/sources.list.bak"

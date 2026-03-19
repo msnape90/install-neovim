@@ -30,6 +30,9 @@ if [ ! -d "$TPM_DIR"]; then
   git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
 fi
 
+rm -rf "$CONFIG_DIR"
+mkdir "$CONFIG_DIR"
+
 cp "$CONFIG_FILE" "$TMUX_CONF"
 cp "$RELOAD_FILE" "$CONFIG_DIR/reload-tmux.conf"
 

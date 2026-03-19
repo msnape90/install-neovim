@@ -14,7 +14,7 @@ CONFIG_DIR="$HOME/.config/tmux"
 TMUX_CONF="$CONFIG_DIR/tmux.conf"
 TPM_DIR="$CONFIG_DIR/plugins/tpm"
 
-sudo apt update && sudo apt install tmux git
+sudo apt update && sudo apt install tmux git -y
 
 mkdir -p "$CONFIGDIR"
 
@@ -22,8 +22,8 @@ if [ ! -d "$TPM_DIR"]; then
   git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
 fi
 
-mv ./.config/tmux/reload-tmux.conf "$CONFIG_DIR/reload-tmux.conf"
-mv ./.config/tmux/tmux.conf "$TMUX_CONF"
+mv .config/tmux/reload-tmux.conf "$CONFIG_DIR/reload-tmux.conf"
+mv .config/tmux/tmux.conf "$TMUX_CONF"
 
 tmux -f "$TMUX_CONF" new-session -d -s bootstrap 'sleep 1'
 tmux -f "$TMUX_CONF" run-shell "$TPM_DIR/bin/install_plugins"

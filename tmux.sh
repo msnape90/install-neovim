@@ -31,7 +31,7 @@ RELOAD_FILE="$TMUX_DIR/reload-tmux.conf"
 mkdir -p "$CONFIG_DIR"
 mkdir -p "RESURRECT_DIR"
 
-# sudo apt update && sudo apt install tmux git -y
+sudo apt update && sudo apt install tmux git -y
 
 if [ ! -d "$TPM_DIR" ]; then
   git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"

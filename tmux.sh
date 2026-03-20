@@ -10,32 +10,40 @@ sudo -n true 2>/dev/null || {
   exit 1
 }
 
+# base dirs
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CONFIG_DIR="$HOME/.config/tmux"
+
+# config dirs
+TMUX_DIR="$SCRIPT_DIR/.config/tmux"
+TPM_DIR="$CONFIG_DIR/plugins/tpm"
+RESURRECT_DIR="$HOME/.tmux/resurrect"
 
 # File Locations
-CONFIG_DIR="$HOME/.config/tmux"
-TMUX_CONF="$CONFIG_DIR/tmux.conf"
-TPM_DIR="$CONFIG_DIR/plugins/tpm"
+LOC_TMUX_FILE="$CONFIG_DIR/tmux.conf"
+LOC_RELOAD_FILE="$CONFIG_DIR/reload-tmux.conf"
 
 # Config Files
-FILE_DIR="$SCRIPT_DIR/.config/tmux"
-CONFIG_FILE="$FILE_DIR/tmux.conf"
-RELOAD_FILE="$FILE_DIR/reload-tmux.conf"
+CONFIG_FILE="$TMUX_DIR/tmux.conf"
+RELOAD_FILE="$TMUX_DIR/reload-tmux.conf"
 
-sudo apt update && sudo apt install tmux git -y
+# rm -rf "$CONFIG_DIR"
+mkdir -p "$CONFIG_DIR"
+mkdir -p "RESURRECT_DIR"
 
-mkdir -p "$CONFIGDIR"
+# sudo apt update && sudo apt install tmux git -y
 
-if [ ! -d "$TPM_DIR"]; then
+if [ ! -d "$TPM_DIR" ]; then
   git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
 fi
 
-rm -rf "$CONFIG_DIR"
-mkdir "$CONFIG_DIR"
+cp "$CONFIG_FILE" "$LOC_TMUX_FILE"
+cp "$RELOAD_FILE" "$LOC_RELOAD_FILE"
 
-cp "$CONFIG_FILE" "$TMUX_CONF"
-cp "$RELOAD_FILE" "$CONFIG_DIR/reload-tmux.conf"
-
-tmux -f "$TMUX_CONF" new-session -d -s bootstrap 'sleep 1'
-tmux -f "$TMUX_CONF" run-shell "$TPM_DIR/bin/install_plugins"
-tmux kill-session -t bootstrap
+#
+#
+#
+#
+# # tmux -f "$TMUX_CONF" new-session -d -s bootstrap 'sleep 1'
+# # tmux -f "$TMUX_CONF" run-shell "$TPM_DIR/bin/install_plugins"
+# # tmux kill-session -t bootstrap

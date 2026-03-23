@@ -27,7 +27,7 @@ LOC_RELOAD_FILE="$CONFIG_DIR/reload-tmux.conf"
 CONFIG_FILE="$TMUX_DIR/tmux.conf"
 RELOAD_FILE="$TMUX_DIR/reload-tmux.conf"
 
-# rm -rf "$CONFIG_DIR"
+rm -rf "$CONFIG_DIR"
 mkdir -p "$CONFIG_DIR"
 mkdir -p "$RESURRECT_DIR"
 
@@ -40,6 +40,9 @@ fi
 cp "$CONFIG_FILE" "$LOC_TMUX_FILE"
 cp "$RELOAD_FILE" "$LOC_RELOAD_FILE"
 
-tmux -f "$TMUX_CONF" new-session -d -s bootstrap 'sleep 1'
-tmux -f "$TMUX_CONF" run-shell "$TPM_DIR/bin/install_plugins"
-tmux kill-session -t bootstrap
+tmux -f "$LOC_TMUX_FILE" new-session -d -s bootstrap &&
+  tmux send-keys 'sleep 1' C-m &&
+  sleep 1 &&
+  tmux -f "$LOC_TMUX_FILE" run-shell "$TPM_DIR/bin/plugins" &&
+  sleep 3 &&
+  tmux kill-session -t bootstrap

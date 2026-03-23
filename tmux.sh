@@ -40,9 +40,9 @@ fi
 cp "$CONFIG_FILE" "$LOC_TMUX_FILE"
 cp "$RELOAD_FILE" "$LOC_RELOAD_FILE"
 
-tmux -f "$LOC_TMUX_FILE" new-session -d -s bootstrap &&
-  tmux send-keys 'sleep 1' C-m &&
-  sleep 1 &&
-  tmux -f "$LOC_TMUX_FILE" run-shell "$TPM_DIR/bin/plugins" &&
-  sleep 3 &&
-  tmux kill-session -t bootstrap
+tmux -f "$LOC_TMUX_FILE" new-session -d -s bootstrap
+tmux send-keys 'sleep 1' C-m &&
+  sleep 1
+tmux -f "$LOC_TMUX_FILE" run-shell "$TPM_DIR/bin/install_plugins" &&
+  sleep 3
+tmux kill-session -t bootstrap

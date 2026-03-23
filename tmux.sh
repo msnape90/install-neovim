@@ -17,7 +17,7 @@ CONFIG_DIR="$HOME/.config/tmux"
 # config dirs
 TMUX_DIR="$SCRIPT_DIR/.config/tmux"
 TPM_DIR="$CONFIG_DIR/plugins/tpm"
-RESURRECT_DIR="$HOME/.tmux/resurrect"
+RESURRECT_DIR="$HOME/.local/.tmux/resurrect"
 
 # File Locations
 LOC_TMUX_FILE="$CONFIG_DIR/tmux.conf"
@@ -29,9 +29,9 @@ RELOAD_FILE="$TMUX_DIR/reload-tmux.conf"
 
 # rm -rf "$CONFIG_DIR"
 mkdir -p "$CONFIG_DIR"
-mkdir -p "RESURRECT_DIR"
+mkdir -p "$RESURRECT_DIR"
 
-sudo apt update && sudo apt install tmux git -y
+sudo apt update && sudo apt install fzf tmux git -y
 
 if [ ! -d "$TPM_DIR" ]; then
   git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"

@@ -42,8 +42,8 @@ if [ ! -d "$SYS_DIR_TPM" ]; then
   git clone https://github.com/tmux-plugins/tpm "$SYS_DIR_TPM"
 fi
 
-cp "$SCRIPT_FILE_TMUX_CONF" "$sys_file_tmux_conf"
-cp "$SCRIPT_FILE_RELOAD_TMUX_CONF" "$sys_file_reload_tmux_conf"
+cp "$SCRIPT_FILE_TMUX_CONF" "$SYS_FILE_TMUX_CONF"
+cp "$SCRIPT_FILE_RELOAD_TMUX_CONF" "$SYS_FILE_RELOAD_TMUX_CONF"
 
 tmux -f "$SYS_FILE_TMUX_CONF" new-session -d -s bootstrap
 tmux send-keys 'sleep 1' C-m &&

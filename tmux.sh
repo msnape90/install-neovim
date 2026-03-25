@@ -73,4 +73,4 @@ grep -qxF "$LINETOADD" "$HOME/.bashrc" || echo "$LINETOADD" >>"$HOME/.bashrc"
 LINETOADD='export PATH="$PATH:$HOME/.local/bin"'
 grep -qxF "$LINETOADD" "$HOME/.bashrc" || echo "$LINETOADD" >>"$HOME/.bashrc"
 
-source "$HOME/.bashrc "
+source "$HOME/.bashrc"

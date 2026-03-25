@@ -38,7 +38,7 @@ SYS_FILE_SESSIONIZER_BIN="$SYS_LOCAL_BIN/tmux-sessionizer"
 rm -rf "$SYS_DIR_TMUX"
 mkdir -p "$SYS_DIR_TMUX"
 mkdir -p "$SYS_RESURRECT_DIR"
-mkdir -p "SYS_DIR_SESSIONIZER"
+mkdir -p "$SYS_DIR_SESSIONIZER"
 mkdir -p "$SYS_LOCAL_BIN"
 
 sudo apt update && sudo apt install fzf tmux git -y

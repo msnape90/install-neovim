@@ -23,7 +23,7 @@ SCRIPT_DIR_TMUX="$SCRIPT_DIR_CONFIG/tmux"
 SYS_DIR_TPM="$SYS_DIR_CONFIG/tmux/plugins/tpm"
 SYS_DIR_TMUX="$SYS_DIR_CONFIG/tmux"
 SYS_DIR_SESSIONIZER="$SYS_DIR_CONFIG/tmux-sessionizer"
-SYS_RESURRECT_DIR="$HOME/.local/.tmux/resurrect"
+SYS_RESURRECT_DIR="$HOME/.local/share/tmux/resurrect"
 
 # script file locations
 SCRIPT_FILE_TMUX_CONF="$SCRIPT_DIR_TMUX/tmux.conf"
@@ -73,4 +73,4 @@ grep -qxF "$LINETOADD" "$HOME/.bashrc" || echo "$LINETOADD" >>"$HOME/.bashrc"
 LINETOADD='export PATH="$PATH:$HOME/.local/bin"'
 grep -qxF "$LINETOADD" "$HOME/.bashrc" || echo "$LINETOADD" >>"$HOME/.bashrc"
 
-source "$HOME/.bashrc"
+source "$HOME/.bashrc "

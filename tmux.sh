@@ -23,7 +23,7 @@ SCRIPT_DIR_TMUX="$SCRIPT_DIR_CONFIG/tmux"
 SYS_DIR_TPM="$SYS_DIR_CONFIG/tmux/plugins/tpm"
 SYS_DIR_TMUX="$SYS_DIR_CONFIG/tmux"
 SYS_DIR_SESSIONIZER="$SYS_DIR_CONFIG/tmux-sessionizer"
-SYS_RESURRECT_DIR="$HOME/.local/share/tmux/resurrect"
+# SYS_RESURRECT_DIR="$HOME/.local/share/tmux/resurrect"
 
 # script file locations
 SCRIPT_FILE_TMUX_CONF="$SCRIPT_DIR_TMUX/tmux.conf"
@@ -38,7 +38,7 @@ SYS_FILE_SESSIONIZER_BIN="$SYS_LOCAL_BIN/tmux-sessionizer"
 # create any needed dirs
 rm -rf "$SYS_DIR_TMUX"
 mkdir -p "$SYS_DIR_TMUX"
-mkdir -p "$SYS_RESURRECT_DIR"
+# mkdir -p "$SYS_RESURRECT_DIR"
 mkdir -p "$SYS_LOCAL_BIN"
 
 # install required packages

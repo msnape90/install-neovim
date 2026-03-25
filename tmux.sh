@@ -67,7 +67,7 @@ tmux -f "$SYS_FILE_TMUX_CONF" run-shell "$SYS_FILE_TPM_INSTALL_PLUGINS" &&
 tmux kill-session -t bootstrap
 
 # creates the required keybindings and paths
-LINETOADD='bind -x '"\C-w": "who"''
+LINETOADD="bind -x '\"\\C-f\": \"tmux-sessionizer\"'"
 grep -qxF "$LINETOADD" "$HOME/.bashrc" || echo "$LINETOADD" >>"$HOME/.bashrc"
 
 LINETOADD='export PATH="$PATH:$HOME/.local/bin"'
